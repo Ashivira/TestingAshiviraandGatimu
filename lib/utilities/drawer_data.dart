@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:wardrobepages/Pages/about_page.dart';
-import 'package:wardrobepages/Pages/cart.dart';
-import 'package:wardrobepages/Pages/help_page.dart';
-import 'package:wardrobepages/Pages/my_details_page.dart';
-import 'package:wardrobepages/Pages/notifications_page.dart';
-import 'package:wardrobepages/Pages/paymentmethods.dart';
-import 'package:wardrobepages/Pages/saved_measurements_page.dart';
-import 'package:wardrobepages/Pages/wishlist.dart';
+import 'package:wardrobepages/Pages/payment_methods.dart';
+import 'package:wardrobepages/Pages/size_guide.dart';
+import 'package:wardrobepages/pages/recommended_stores_page.dart';
+import '../pages/about_page.dart';
+import '../pages/cart.dart';
+import '../pages/help_page.dart';
+import '../pages/my_details_page.dart';
+import '../pages/notifications_page.dart';
+import '../pages/saved_measurements_page.dart';
+import '../pages/wishlist.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -18,7 +20,6 @@ class MyDrawer extends StatelessWidget {
         child: Container(
           color: const Color(0xFF0E1A2B), // Dark background color
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Profile Section
               const DrawerHeader(
@@ -54,95 +55,78 @@ class MyDrawer extends StatelessWidget {
                         ],
                       ),
                     ),
-                    //Icon(Icons.edit, color: Colors.grey, size: 18),
                   ],
                 ),
               ),
 
-              // Menu Items
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Notifications Page from Drawer
-                  icon: Icons.notifications,
-                  text: "Notifications",
-                  context: context,
-                  destination: const NotificationsPage()),
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Cart from Drawer
-                  icon: Icons.shopping_bag,
-                  text: "Cart",
-                  context: context,
-                  destination: const CartPage()),
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Wishlist from Drawer
-                  icon: Icons.favorite,
-                  text: "Wishlist",
-                  context: context,
-                  destination: WishlistPage()),
-              const SizedBox(
-                height: 20,
+              // Menu Items (Scrollable)
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      _drawerItem(
+                          icon: Icons.home,
+                          text: "Home",
+                          context: context,
+                          destination: RecommendedStoresPage()),
+                      _drawerItem(
+                          icon: Icons.notifications,
+                          text: "Notifications",
+                          context: context,
+                          destination: const NotificationsPage()),
+                      _drawerItem(
+                          icon: Icons.shopping_bag,
+                          text: "Cart",
+                          context: context,
+                          destination: const CartPage()),
+                      _drawerItem(
+                          icon: Icons.favorite,
+                          text: "Wishlist",
+                          context: context,
+                          destination: WishlistPage()),
+                      _drawerItem(
+                          icon: Icons.pin_drop,
+                          text: "Saved Measurements",
+                          context: context,
+                          destination: const SavedMeasurementsPage()),
+                      _drawerItem(
+                          icon: Icons.payment,
+                          text: "Payment Methods",
+                          context: context,
+                          destination: PaymentMethodsPage()),
+                      _drawerItem(
+                          icon: Icons.person,
+                          text: "My Profile",
+                          context: context,
+                          destination: MyDetailsPage()),
+                      _drawerItem(
+                          icon: Icons.developer_board,
+                          text: "Size Guide",
+                          context: context,
+                          destination: SizeGuideScreen()),
+                      _drawerItem(
+                          icon: Icons.help,
+                          text: "Help",
+                          context: context,
+                          destination: const HelpPage()),
+                      _drawerItem(
+                          icon: Icons.info,
+                          text: "About",
+                          context: context,
+                          destination: const AboutPage()),
+                    ],
+                  ),
+                ),
               ),
 
-              _drawerItem(
-                  // Button to go to Saved Measurements from Drawer
-                  icon: Icons.pin_drop,
-                  text: "Saved Measurements",
-                  context: context,
-                  destination: const SavedMeasurementsPage()),
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Payment Methods from Drawer
-                  icon: Icons.payment,
-                  text: "Payment Methods",
-                  context: context,
-                  destination: PaymentMethodsPage()),
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Profile from Drawer
-                  icon: Icons.person,
-                  text: "My Profile",
-                  context: context,
-                  destination: const MyDetailsPage()),
-
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to Help Page from Drawer
-                  icon: Icons.help,
-                  text: "Help",
-                  context: context,
-                  destination: const HelpPage()),
-              const SizedBox(
-                height: 20,
-              ),
-              _drawerItem(
-                  // Button to go to About Page from Drawer
-                  icon: Icons.info,
-                  text: "About",
-                  context: context,
-                  destination: const AboutPage()),
-
-              const Spacer(),
-
-              // Logout Button
+              // Logout Button (Always at Bottom)
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: GestureDetector(
-                  // TODO: Add logout functionality
-                  //onTap: () => _logout(context), // Call logout method on tap
+                  onTap: () {
+                    // TODO: Implement logout functionality
+                  },
+                  
                   child: const Text(
                     "LOG OUT",
                     style: TextStyle(color: Colors.grey, fontSize: 16),

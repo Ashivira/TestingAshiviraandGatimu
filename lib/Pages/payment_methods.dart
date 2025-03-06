@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wardrobepages/utilities/drawer_data.dart';
 
 class PaymentMethodsPage extends StatelessWidget {
+  const PaymentMethodsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,41 +12,42 @@ class PaymentMethodsPage extends StatelessWidget {
         backgroundColor: Colors.pink[50],
         elevation: 0,
         centerTitle: true,
-        title: CircleAvatar(
+        title: const CircleAvatar(
           backgroundColor: Colors.black,
           child: Icon(Icons.account_balance_wallet, color: Colors.white),
         ),
       ),
+      drawer: MyDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Text(
                 "Payment Methods",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(child: Image.asset('assets/mpesa.png', height: 30)),
-            SizedBox(height: 10),
-            Text("Enter Your Phone No."),
-            TextField(decoration: InputDecoration(hintText: "07XXXX")),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            const Text("Enter Your Phone No."),
+            const TextField(decoration: InputDecoration(hintText: "07XXXX")),
+            const SizedBox(height: 10),
             Center(child: Image.asset('assets/paypal.png', height: 30)),
-            SizedBox(height: 10),
-            Text("Enter Your Email"),
-            TextField(
+            const SizedBox(height: 10),
+            const Text("Enter Your Email"),
+            const TextField(
                 decoration:
                     InputDecoration(hintText: "Laillyfa@Examplemail.com")),
-            SizedBox(height: 10),
-            Text("Card Number"),
-            TextField(
+            const SizedBox(height: 10),
+            const Text("Card Number"),
+            const TextField(
                 decoration:
                     InputDecoration(hintText: "1231 – 2312 – 3123 – 1231")),
-            SizedBox(height: 10),
-            Row(
+            const SizedBox(height: 10),
+            const Row(
               children: [
                 Expanded(
                   child: Column(
@@ -68,26 +72,26 @@ class PaymentMethodsPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Text("Card Holder Name"),
-            TextField(
+            const SizedBox(height: 10),
+            const Text("Card Holder Name"),
+            const TextField(
                 decoration: InputDecoration(hintText: "Laillyfa Febrina")),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text("Payment method saved successfully!"),
                       duration: Duration(seconds: 2),
                     ),
                   );
                 },
-                child: Text("REGISTER", style: TextStyle(color: Colors.white)),
+                child: const Text("REGISTER", style: TextStyle(color: Colors.white)),
               ),
             ),
           ],

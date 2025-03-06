@@ -60,8 +60,7 @@ class AboutPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const MyDetailsPage()),
+                  MaterialPageRoute(builder: (context) => MyDetailsPage()),
                 );
               },
             ),

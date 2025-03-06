@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:wardrobepages/utilities/drawer_data.dart';
 
 class EditDetailsPage extends StatelessWidget {
+  const EditDetailsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1C2A39),
+      backgroundColor: const Color(0xFF1C2A39),
       appBar: AppBar(
-        backgroundColor: Color(0xFF1C2A39),
-        title: Text(
+        backgroundColor: const Color(0xFF1C2A39),
+        title: const Text(
           'Edit Details',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         elevation: 0,
       ),
+      drawer: MyDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -21,35 +25,35 @@ class EditDetailsPage extends StatelessWidget {
           children: [
             _buildLabel('First Name'),
             _buildTextField('Lailyfa'),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildLabel('Last Name(S)'),
             _buildTextField('Febrina'),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildLabel('Email'),
             _buildTextField('Lailyfa@Examplemail.com'),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildLabel('Mobile Number'),
             _buildTextField('07XXXX'),
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFFDDDDD),
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  backgroundColor: const Color(0xFFFDDDDD),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Changes have been saved successfully!'),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'Save Details',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -69,7 +73,7 @@ class EditDetailsPage extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 5),
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),

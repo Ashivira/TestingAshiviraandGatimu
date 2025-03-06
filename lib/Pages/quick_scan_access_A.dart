@@ -130,7 +130,7 @@ class _MeasurementScreenState extends State<MeasurementScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyDetailsPage()),
+                MaterialPageRoute(builder: (context) => MyDetailsPage()),
               );
             },
           ),

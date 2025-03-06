@@ -1,113 +1,111 @@
 import 'package:flutter/material.dart';
+import 'package:wardrobepages/utilities/drawer_data.dart';
 
 class SizeGuideScreen extends StatelessWidget {
+  const SizeGuideScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
+      backgroundColor: const Color(0xFFFFE4E1), // Dark blue background
       appBar: AppBar(
-        title: Text('Size Guide'),
-        backgroundColor: Colors.blueGrey[800],
+        backgroundColor: const Color(0xFFFFE4E1),
+        elevation: 0,
       ),
+      drawer: MyDrawer(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Text(
-                'Size Guide',
-                style: TextStyle(
-                  fontSize: 28,
+            // Title
+            const Text(
+              "Size Guide",
+              style: TextStyle(
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+                  color: Color(0xFF0F1B2B)),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
-            Center(
-              child: Text(
-                'Measurement Instructions',
-                style: TextStyle(
+            const SizedBox(height: 8),
+
+            const Text(
+              "Measurement Instructions",
+              style: TextStyle(
                   fontSize: 18,
-                  color: Colors.white70,
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: Image.asset(
-                'assets/measurement_chart.png',
-                height: 150,
-              ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              '- Chest: Measure around the fullest part of your chest.\n'
-              '- Waist: Measure at the narrowest part of your waistline.\n'
-              '- Hips: Measure around the widest part of your hips.',
-              style: TextStyle(color: Colors.white70, fontSize: 16),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: Text(
-                'Size Chart',
-                style: TextStyle(
-                  fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+                  color: Color(0xFF0F1B2B)),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
-            Table(
-              border: TableBorder.all(color: Colors.white),
-              children: [
-                _tableRow(['UNISEX', 'WOMEN', 'MEN'], isHeader: true),
-                _tableRow(['XS', '0-4', '30-32']),
-                _tableRow(['S', '6-8', '34-36']),
-                _tableRow(['M', '10-12', '38-40']),
-                _tableRow(['L', '12-14', '42-44']),
-                _tableRow(['XL', '16-18', '46-48']),
-                _tableRow(['XXL', '20-22', '50-52']),
-                _tableRow(['XXXL', '24-26', '54-56']),
-              ],
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: Text(
-                'STILL NOT SURE? CONTACT CUSTOMER SUPPORT.',
-                style: TextStyle(
-                  fontSize: 16,
+            const SizedBox(height: 10),
+
+            // Measurement Instructions
+            _buildInstruction(
+                "• Chest: Measure around the fullest part of your chest."),
+            _buildInstruction(
+                "• Waist: Measure at the narrowest part of your waistline."),
+            _buildInstruction(
+                "• Hips: Measure around the widest part of your hips."),
+            const SizedBox(height: 20),
+
+            // Size Chart Section
+            const Text(
+              "Size Chart",
+              style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white70,
-                ),
-              ),
+                  color: Color(0xFF0F1B2B)),
+              textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 10),
+
+            // Men's Trousers Size Guide
+            _buildImage("assets/mens_size_chart.png"),
+            const SizedBox(height: 15),
+
+            // Women's Trousers Size Guide
+            _buildImage("assets/womens_size_chart.png"),
+            const SizedBox(height: 15),
+
+            // Unisex Size Chart
+            _buildImage("assets/unisex_size_chart.png"),
+            const SizedBox(height: 30),
+
+            // Customer Support Message
+            const Text(
+              "STILL NOT SURE? CONTACT CUSTOMER SUPPORT.",
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF0F1B2B)),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
   }
 
-  TableRow _tableRow(List<String> cells, {bool isHeader = false}) {
-    return TableRow(
-      children: cells
-          .map(
-            (cell) => Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                cell,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          )
-          .toList(),
+  Widget _buildInstruction(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 14, color: Color(0xFF0F1B2B)),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildImage(String assetPath) {
+    return Center(
+      child: Image.asset(
+        assetPath,
+        width: 300, // Adjust width if necessary
+        fit: BoxFit.contain,
+      ),
     );
   }
 }

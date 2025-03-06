@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wardrobepages/utilities/drawer_data.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -78,6 +79,7 @@ class _CartPageState extends State<CartPage> {
           onPressed: () => Navigator.pop(context),
         ),
       ),
+      drawer: MyDrawer(),
       body: Column(
         children: [
           Expanded(
