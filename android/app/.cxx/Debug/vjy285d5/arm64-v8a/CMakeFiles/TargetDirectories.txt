@@ -1,0 +1,2 @@
+C:/flutterprojects/IVY/wardrobe_app/wardrobepages/android/app/.cxx/Debug/vjy285d5/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/flutterprojects/IVY/wardrobe_app/wardrobepages/android/app/.cxx/Debug/vjy285d5/arm64-v8a/CMakeFiles/rebuild_cache.dir
